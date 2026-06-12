@@ -92,9 +92,7 @@ def bootstrap(scenario: str = "NOMINAL") -> GAIA:
 # utility: print a subsystem summary table
 def print_summary(gaia: GAIA):
     report = gaia.full_report()
-    print("\n" + "═" * 70)
     print("  GAIA — SYSTEM SUMMARY")
-    print("═" * 70)
     print(f"  Status:         {report['gaia_status']}")
     print(f"  Sim. Year:      {report['simulation_year']}")
     print(f"  Phases Done:    {report['phases_complete']}")
@@ -112,7 +110,6 @@ def print_summary(gaia: GAIA):
     print(f"    Floral:         {b['floral_pct']*100:.1f}%")
     print(f"    Faunal:         {b['faunal_pct']*100:.1f}%")
     print(f"    Human Pop:      {b['human_pop']:,}")
-    print("═" * 70)
 
 
 # entry point
@@ -125,10 +122,8 @@ def main():
         sys.exit(1)
 
     gaia = bootstrap(scenario)
-
-    print("\n" + "=" * 70)
+    
     print(f"  INITIATING TERRAFORMING SEQUENCE — {scenario}")
-    print("=" * 70 + "\n")
 
     gaia.execute_terraforming_sequence(run_scenario=scenario)
     print_summary(gaia)
